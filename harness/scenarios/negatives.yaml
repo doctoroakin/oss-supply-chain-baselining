@@ -1,0 +1,149 @@
+# Contributor names and emails have been removed. Each contributor is
+# identified only by their hashed ID (contributor_id).
+#
+# Initial seed list. Review and curate before authoritative evaluation runs.
+#
+# Top 5 contributors by commit count from each repo (php-src, event-stream,
+# systemd). Selection excludes all known malicious commit authors.
+#
+# appropriate_for_threat_models: tags which threat models each negative
+# scenario is valid for testing. Negatives are tagged with which threat
+# models they are appropriate for testing. A sparse contributor cannot
+# test impersonation detection because there is no baseline to measure
+# against, but is the right shape for testing cold-start detection.
+#
+# - Rich-history contributors (50+ commits, 6+ months): impersonation,
+#   patient_attacker — they have deep baselines a detector can compare
+#   against.
+# - Sparse contributors (few commits, short tenure): cold_start — they
+#   look like the shape of a cold-start attacker but are benign.
+# - Bots: cold_start — same logic, unusual commit pattern but benign.
+
+scenarios:
+  # === php-src (all meet 50-commit + 6-month bar) ===
+
+  - id: php-src-neg-01
+    repo: php-src
+    contributor_id: "7754103f15b71efa1e9fd31fde0462609f5f64828b496adee288ea1edee06d1f"
+    commit_count: 9059
+    active_range: "2013-02-17 to 2022-10-02"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: php-src-neg-02
+    repo: php-src
+    contributor_id: "cc59e34defaa1a1ea21561c5ef4701260643c68c801fa3e541e163e1f42d72d6"
+    commit_count: 9028
+    active_range: "2012-03-21 to 2023-04-10"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: php-src-neg-03
+    repo: php-src
+    contributor_id: "4a3dc4b42b6d19d67cd0ef7336ac5cd32e990d36171b985967a5df5c11436b87"
+    commit_count: 5851
+    active_range: "2015-04-16 to 2023-01-18"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: php-src-neg-04
+    repo: php-src
+    contributor_id: "3e3495812b48816c3506172db1bfe2f8f2c9406bed94c957de1339dd8f7e1bb5"
+    commit_count: 5780
+    active_range: "2002-01-17 to 2012-04-03"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: php-src-neg-05
+    repo: php-src
+    contributor_id: "d6b827b5e1671f3293fe80d1b664c28bf4dab1aa5b1c505432942346244f9c99"
+    commit_count: 5019
+    active_range: "2002-02-28 to 2009-03-11"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  # === event-stream ===
+
+  - id: event-stream-neg-01
+    repo: event-stream
+    contributor_id: "da2130f45665d15ae496af58aa451d92ea3976f0ae2c5edc24da8b62a735bccb"
+    commit_count: 248
+    active_range: "2011-08-20 to 2017-10-09"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: event-stream-neg-02
+    repo: event-stream
+    contributor_id: "8bfacef5c1f0912d02a7e86e2b51efd16eb15677623dcad92efb0d2823ee2093"
+    commit_count: 13
+    active_range: "2012-07-18 to 2012-08-18"
+    appropriate_for_threat_models: [cold_start]
+    pending: false
+
+  - id: event-stream-neg-03
+    repo: event-stream
+    contributor_id: "e16a36928ba89abe17a577eb0fd31ce03aa93b9f4597dd644bbdadd07be251fe"
+    commit_count: 8
+    active_range: "2011-11-01 to 2011-11-02"
+    appropriate_for_threat_models: [cold_start]
+    pending: false
+
+  - id: event-stream-neg-04
+    repo: event-stream
+    contributor_id: "da1cadf722d5ade401bdd4cced8b43fb237466cb608d418c1b9ea5191043a1c4"
+    commit_count: 6
+    active_range: "2011-09-20 to 2012-07-18"
+    appropriate_for_threat_models: [cold_start]
+    notes: "Bot account."
+    pending: false
+
+  - id: event-stream-neg-05
+    repo: event-stream
+    contributor_id: "4faa6369bb7d9cd922ea274d648828759e665cb35c0a42fb2b6e345d2823b2c8"
+    commit_count: 5
+    active_range: "2012-05-21 to 2012-06-14"
+    appropriate_for_threat_models: [cold_start]
+    pending: false
+
+  # === systemd (all meet 50-commit + 6-month bar) ===
+  # Different project culture from php-src — gives baseline diversity.
+
+  - id: systemd-neg-01
+    repo: systemd
+    contributor_id: "3d3524c6c2a2cd48b99fb3e2de53a8126cb699ec02a1e977c70349e9407eef94"
+    commit_count: 14141
+    active_range: "2006-08-15 to 2018-12-21"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: systemd-neg-02
+    repo: systemd
+    contributor_id: "9a63ef61ef5937f2cab4adb531c0f64bd791696dba697cb464c27003dd4305f4"
+    commit_count: 4892
+    active_range: "2010-09-07 to 2018-12-21"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: systemd-neg-03
+    repo: systemd
+    contributor_id: "84b9992d0cc1f287c07ce7f9512d44389d04fa8ee9a3be297779eb4f57fd0530"
+    commit_count: 1862
+    active_range: "2015-12-15 to 2019-01-01"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: systemd-neg-04
+    repo: systemd
+    contributor_id: "e178cb6e1ac38a700b115b3ccfee6b8b24a1a6efd0b2970536f7a20a0b2e8748"
+    commit_count: 1785
+    active_range: "2005-07-02 to 2012-04-04"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false
+
+  - id: systemd-neg-05
+    repo: systemd
+    contributor_id: "ae6f25fb6f76f970a7eddcbc76d216d226a8c508876f0eaaa751da110d9c5b02"
+    commit_count: 1625
+    active_range: "2010-06-16 to 2017-08-30"
+    appropriate_for_threat_models: [impersonation, patient_attacker]
+    pending: false

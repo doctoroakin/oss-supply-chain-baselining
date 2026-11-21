@@ -1,0 +1,49 @@
+# Positive scenarios: known malicious commits
+# Source: paper19_full_corpus.json
+# XZ scenarios activate when extraction completes
+
+scenarios:
+  - id: php-src-rasmus-impersonation
+    repo: php-src
+    target_commit_sha: c730aa26bd52829a49f2ad284b181b7e82a68d7d
+    threat_model: impersonation
+    pending: false
+    notes: >
+      PHP git server compromised. Commit pushed under Rasmus Lerdorf's name.
+      Message: "[skip-ci] Fix typo". CWE-510 Backdoor Injection.
+
+  - id: php-src-nikita-impersonation
+    repo: php-src
+    target_commit_sha: 2b0f239b211c7544ebc7a4cd2c977a5b7a11ed8a
+    threat_model: impersonation
+    pending: false
+    notes: >
+      PHP git server compromised. Commit pushed under Nikita Popov's name.
+      Reverts the revert of the Rasmus commit. CWE-510 Backdoor Injection.
+
+  - id: event-stream-right9ctrl-takeover
+    repo: event-stream
+    target_commit_sha: e3163361fed01384c986b9b4c18feb1fc42b8285
+    threat_model: cold_start
+    pending: false
+    notes: >
+      New contributor 北川 (right9ctrl) gained access after ~8 commits over 5 days.
+      Injected flatmap-stream dependency. CWE-912 Backdoor Injection.
+
+  - id: xz-jia-tan-phase1-payload
+    repo: xz
+    target_commit_sha: cf44e4b7f5dfdbf8c78aef377c10f71e274f63c0
+    threat_model: patient_attacker
+    pending: false
+    notes: >
+      XZ Utils CVE-2024-3094. Phase 1: injected obfuscated backdoor binary
+      payload in tests/files/. Activated 2026-04-09 after XZ extraction completed.
+
+  - id: xz-jia-tan-phase2-update
+    repo: xz
+    target_commit_sha: 6e636819e8f070330d835fce46289a3ff72a7b89
+    threat_model: patient_attacker
+    pending: false
+    notes: >
+      XZ Utils CVE-2024-3094. Phase 2: updated the payload test files with
+      final backdoor object. Activated 2026-04-09 after XZ extraction completed.
